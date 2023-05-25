@@ -6,8 +6,8 @@ const CompanyDataForm = () => {
   return (
     <form>
       <div className="title">
-        <span id="welcome">Company</span>
-        <span id="content">Information</span>
+        <span id="welcome">Company Information</span>
+        <span id="content">Please fill the fields</span>
       </div>
       <input
         autoComplete="off"

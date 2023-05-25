@@ -3,6 +3,9 @@ import CompanyDataForm from "../components/CompanyDataForm";
 import EmployeeDataForm from "../components/EmployeeDataForm";
 
 const MainPage = () => {
+  useEffect(() => {
+    return () => {};
+  });
   return (
     <>
       <div className="container">
@@ -12,8 +15,6 @@ const MainPage = () => {
         <section className="employee-section">
           <div className="employee-list">
             <EmployeeDataForm number={1} />
-            <EmployeeDataForm number={2} />
-            <EmployeeDataForm number={3} />
           </div>
         </section>
       </div>

@@ -19,7 +19,9 @@ body {
 :root {
   --glassmorphic: rgba(255, 255, 255, 0.3);
   --text-color: #fff;
+  --theme-color-dark: #a17ab1;
   --gradient: -45deg, #cbb4d4, #20002c;
+  --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .container {
@@ -54,13 +56,12 @@ body {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
-  padding: 1.2em 2em 2em 2em;
+  padding: 1.2em 2em;
   border-radius: 20px;
   border-left: 1px solid var(--glassmorphic);
   border-top: 1px solid var(--glassmorphic);
   width: 550px;
   height: auto;
-  min-height: 400px;
 }
 
 .company-section {
@@ -80,7 +81,9 @@ body {
   gap: 1rem;
   padding: 0rem 3rem;
 }
-
+.employee-list::-webkit-scrollbar {
+  display: none;
+}
 .company-section form {
   color: var(--text-color);
   display: grid;
@@ -92,7 +95,7 @@ body {
     "employee employee"
     "desc desc"
     "bttn bttn";
-  grid-template-rows: 140px 91px 91px 170px 80px;
+  grid-template-rows: 110px 91px 91px 170px 90px;
   grid-gap: 0 10px;
 }
 .company-section form > #employee-number {
@@ -110,30 +113,38 @@ body {
 .company-section form > .company-section form input[type="email"] {
   grid-area: email;
 }
-.company-section form > .title {
-  display: grid;
-  justify-content: center;
-  align-items: start;
-}
 .company-section form > button[type="submit"] {
   grid-area: bttn;
+}
+.title {
+  position: relative;
+  display: grid;
+  justify-content: left;
+  align-items: start;
+  padding-left: 1rem;
+}
+.title:before {
+  position: absolute;
+  content: "";
+  background-color: var(--glassmorphic);
+  width: 5px;
+  height: 100%;
 }
 
 #welcome {
   text-align: center;
-  font-size: 2.9em;
+  font-size: 2.4em;
   font-weight: 600;
 }
 
 #content {
   font-size: 0.9em;
-  text-align: center;
+  text-align: left;
 }
 
 .input {
   color: var(--text-color);
   background: transparent;
-  outline: none;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
@@ -145,11 +156,14 @@ body {
   padding: 1em;
   font-family: Montserrat, sans-serif;
   transition: all 0.2s ease-in-out;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: var(--text-shadow);
   font-weight: 500;
   border: 3px solid transparent;
+  outline: none;
 }
-
+.input:focus {
+  border: 3px solid white;
+}
 #submitbtn {
   width: 150px;
   font-size: 1rem;
@@ -157,7 +171,6 @@ body {
   align-self: center;
   color: var(--text-color);
   background: transparent;
-  outline: none;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
@@ -168,11 +181,14 @@ body {
   padding: 0.8rem;
   font-family: Montserrat, sans-serif;
   transition: all 0.2s ease-in-out;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: var(--text-shadow);
   font-weight: 500;
   border: 3px solid transparent;
+  outline: none;
 }
-
+#submitbtn:focus {
+  border: 3px solid white;
+}
 #submitbtn:hover {
   cursor: pointer;
   box-shadow: 4px 4px 60px rgba(255, 255, 255, 0.2);
@@ -186,11 +202,81 @@ body {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   color: var(--text-color);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: var(--text-shadow);
 }
-
 #description {
   height: 100%;
   width: 100%;
   resize: none;
+}
+/* Single employee card style */
+.single-employee h1 {
+  color: white;
+  font-size: 1.6rem;
+}
+.single-employee {
+  display: grid;
+  align-items: center;
+  gap: 0.5rem;
+  height: auto;
+  max-height: 320px;
+}
+.single-employee form {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-areas:
+    "name age"
+    "email email"
+    "job job"
+    "file file";
+  grid-template-rows: 60px 60px 60px 60px;
+  grid-template-columns: 55% 45%;
+  grid-gap: 0 10px;
+}
+.single-employee form > .employeeName {
+  grid-area: name;
+  width: 100%;
+}
+.single-employee form > .employeeEmail {
+  grid-area: email;
+  width: 100%;
+}
+.single-employee form > .employeeAge {
+  grid-area: age;
+  width: 100%;
+}
+.single-employee form > .employeJobTitle {
+  grid-area: job;
+}
+.single-employee form > .employeeCVFile {
+  grid-area: file;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.single-employee form label {
+  color: white;
+  text-shadow: var(--text-shadow);
+}
+.employeeCVFile {
+  color: white;
+  text-shadow: var(--text-shadow);
+  outline: none;
+}
+input::file-selector-button {
+  color: var(--text-color);
+  text-shadow: var(--text-shadow);
+  background: transparent;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  font-family: Montserrat, sans-serif;
+  outline: none;
+}
+input[type="file"]:focus {
+  border: 3px solid white;
 }

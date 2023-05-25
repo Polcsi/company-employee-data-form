@@ -1,9 +1,9 @@
 #slider-container {
   --value: 0;
-  --slider-track-color: #b0efef45;
+  --slider-track-color: var(--glassmorphic);
   --slider-thumb-color: #fff;
-  --slider-fill-color: #31d3c6;
-  --slider-fill2-color: #00a2bb;
+  --slider-fill-color: #a17ab1;
+  --slider-fill2-color: #20002c;
 
   width: 100%;
   height: 1rem;
@@ -13,33 +13,29 @@
   padding: 0;
   margin: 0;
   position: relative;
-
-  animation: color-cycle 1s infinite alternate linear;
 }
-
-@keyframes color-cycle {
-  0% {
-    --slider-fill-color: #31d3c6;
-  }
-  100% {
-    --slider-fill-color: #00a2bb;
-  }
+#slider-container::before {
+  content: "Number of Employees";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 #slider {
   -webkit-appearance: none;
   appearance: none;
-
   height: 1rem;
   width: 100%;
   margin: 0;
   padding: 0;
-
   background-color: #00000000;
   outline: none;
   z-index: 99;
+  transition: all ease-in-out 0.2s;
 }
-
+#slider:focus {
+  border: 2px solid white;
+}
 #slider-track {
   position: absolute;
   top: calc(50% - 0.25rem);
@@ -83,13 +79,14 @@
   font-weight: 800;
   line-height: 30px;
   height: 30px;
-  width: 30px;
+  width: 40px;
   overflow: hidden;
   text-align: center;
 }
 
 .value-inner {
   color: var(--slider-thumb-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: all 300ms ease-in-out;
 }
