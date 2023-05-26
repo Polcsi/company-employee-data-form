@@ -93,9 +93,8 @@ body {
     "title title"
     "name email"
     "employee employee"
-    "desc desc"
-    "bttn bttn";
-  grid-template-rows: 110px 91px 91px 170px 90px;
+    "desc desc";
+  grid-template-rows: 110px 91px 91px 170px 20px;
   grid-gap: 0 10px;
 }
 .company-section form > #employee-number {
@@ -112,9 +111,6 @@ body {
 }
 .company-section form > .company-section form input[type="email"] {
   grid-area: email;
-}
-.company-section form > button[type="submit"] {
-  grid-area: bttn;
 }
 .title {
   position: relative;

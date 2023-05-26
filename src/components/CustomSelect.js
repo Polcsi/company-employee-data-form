@@ -11,6 +11,7 @@ const CustomSelect = () => {
         className="select employeeJobTitle required-input"
         defaultValue={0}
         onChange={(e) => styleRequiredInput(e)}
+        required
       >
         <option disabled hidden value={0}>
           Select Job

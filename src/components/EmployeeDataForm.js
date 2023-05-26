@@ -8,12 +8,12 @@ const EmployeeDataForm = ({ number }) => {
   return (
     <div className="section single-employee">
       <h1>#{number} Employee</h1>
-      <form>
+      <form className="employee-form" name={number}>
         <input
           className="employeeName input required-input"
           type="text"
           placeholder="Name"
-          required=""
+          required
           onInput={(e) => styleRequiredInput(e)}
         />
         <input
@@ -21,14 +21,14 @@ const EmployeeDataForm = ({ number }) => {
           min={18}
           type="number"
           placeholder="Age"
-          required=""
+          required
           onInput={(e) => styleRequiredInput(e)}
         />
         <input
           className="employeeEmail input required-input"
-          type="text"
+          type="email"
           placeholder="Email"
-          required=""
+          required
           onInput={(e) => styleRequiredInput(e)}
           onInvalid={(e) => invalidEmail(e)}
         />

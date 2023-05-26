@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import CompanyDataForm from "../components/CompanyDataForm";
 import EmployeeDataForm from "../components/EmployeeDataForm";
 import { useGlobalContext } from "../context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MainPage = () => {
   const { numberOfEmployees } = useGlobalContext();
@@ -35,6 +37,7 @@ const MainPage = () => {
           </div>
         </section>
       </div>
+      <ToastContainer />
     </>
   );
 };
