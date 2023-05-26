@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react";
 import CompanyDataForm from "../components/CompanyDataForm";
 import EmployeeDataForm from "../components/EmployeeDataForm";
+import { useGlobalContext } from "../context";
 
 const MainPage = () => {
+  const { numberOfEmployees } = useGlobalContext();
+  const [numberOfForms, setNumberOfForms] = useState([]);
+
   useEffect(() => {
+    setNumberOfForms([]);
+    for (let i = 0; i < numberOfEmployees; ++i) {
+      setNumberOfForms((prevForms) => [...prevForms, i]);
+    }
+
     return () => {};
-  });
+  }, [numberOfEmployees]);
   return (
     <>
       <div className="container">
@@ -14,7 +23,15 @@ const MainPage = () => {
         </section>
         <section className="employee-section">
           <div className="employee-list">
-            <EmployeeDataForm number={1} />
+            {numberOfEmployees === "0" ? (
+              <h4 className="zero-employee">Number of Employees is zero!</h4>
+            ) : (
+              numberOfForms.map((employeeForm, index) => {
+                return (
+                  <EmployeeDataForm key={index} number={employeeForm + 1} />
+                );
+              })
+            )}
           </div>
         </section>
       </div>

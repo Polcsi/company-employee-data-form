@@ -22,6 +22,7 @@ body {
   --theme-color-dark: #a17ab1;
   --gradient: -45deg, #cbb4d4, #20002c;
   --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  --section-width: 550px;
 }
 
 .container {
@@ -59,14 +60,12 @@ body {
   border-radius: 20px;
   border-left: 1px solid var(--glassmorphic);
   border-top: 1px solid var(--glassmorphic);
-  width: 550px;
+  width: var(--section-width);
   height: auto;
 }
-
 .company-section {
   height: 600px !important;
 }
-
 .employee-section {
   height: 600px !important;
   display: grid;
@@ -76,6 +75,8 @@ body {
 .employee-list {
   overflow: auto;
   height: 100%;
+  min-width: var(--section-width);
+  width: auto;
   display: grid;
   gap: 1rem;
   padding: 0rem 3rem;
@@ -207,6 +208,17 @@ body {
   height: 100%;
   width: 100%;
   resize: none;
+}
+.zero-employee {
+  color: var(--text-color);
+  font-size: 1.4rem;
+  text-align: center;
+  text-shadow: var(--text-shadow);
+  width: auto;
+}
+.required-input {
+  border: 3px solid red;
+  box-shadow: 4px 4px 60px rgba(240, 2, 2, 0.366);
 }
 /* Single employee card style */
 .single-employee h1 {

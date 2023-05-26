@@ -23,3 +23,7 @@
 .select option {
   background-color: var(--theme-color-dark);
 }
+.required-input {
+  border: 3px solid red;
+  box-shadow: 4px 4px 60px rgba(240, 2, 2, 0.366);
+}
