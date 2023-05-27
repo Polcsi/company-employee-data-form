@@ -12,6 +12,7 @@
   font-family: Montserrat, sans-serif;
   transition: all 0.2s ease-in-out;
   text-shadow: var(--text-shadow);
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
   text-transform: capitalize;
   font-weight: 500;
   border: 3px solid transparent;

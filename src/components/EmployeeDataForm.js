@@ -10,14 +10,15 @@ const EmployeeDataForm = ({ number }) => {
       <h1>#{number} Employee</h1>
       <form className="employee-form" name={number}>
         <input
-          className="employeeName input required-input"
+          autoComplete="on"
+          className="employeeName input"
           type="text"
           placeholder="Name"
           required
           onInput={(e) => styleRequiredInput(e)}
         />
         <input
-          className="employeeAge input required-input"
+          className="employeeAge input"
           min={18}
           type="number"
           placeholder="Age"
@@ -25,7 +26,8 @@ const EmployeeDataForm = ({ number }) => {
           onInput={(e) => styleRequiredInput(e)}
         />
         <input
-          className="employeeEmail input required-input"
+          autoComplete="on"
+          className="employeeEmail input"
           type="email"
           placeholder="Email"
           required

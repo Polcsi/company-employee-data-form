@@ -8,7 +8,7 @@ const CustomSelect = () => {
   return (
     <>
       <select
-        className="select employeeJobTitle required-input"
+        className="select employeeJobTitle"
         defaultValue={0}
         onChange={(e) => styleRequiredInput(e)}
         required

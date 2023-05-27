@@ -5,7 +5,14 @@ import "../style/customSlider.css";
 import { useGlobalContext } from "../context";
 
 const CompanyDataForm = () => {
-  const { styleRequiredInput, invalidEmail, submitForms } = useGlobalContext();
+  const {
+    styleRequiredInput,
+    invalidEmail,
+    submitForms,
+    companyNameRef,
+    companyEmailRef,
+    companyDescriptionRef,
+  } = useGlobalContext();
 
   return (
     <>
@@ -17,17 +24,19 @@ const CompanyDataForm = () => {
         <input
           required
           placeholder="Name"
-          className="input required-input"
+          className="input"
           id="name"
           type="text"
+          ref={companyNameRef}
           onInput={(e) => styleRequiredInput(e)}
         ></input>
         <input
           required
           placeholder="Email"
-          className="input  required-input"
+          className="input"
           id="email"
           type="email"
+          ref={companyEmailRef}
           onInput={(e) => styleRequiredInput(e)}
           onInvalid={(e) => invalidEmail(e)}
         ></input>
@@ -36,6 +45,7 @@ const CompanyDataForm = () => {
           id="description"
           placeholder="Description"
           className="input"
+          ref={companyDescriptionRef}
         ></textarea>
       </form>
       <button id="submitbtn" type="button" onClick={(e) => submitForms(e)}>
