@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./style/index.css";
 import "./style/customSelect.css";
+import "./style/topScrollButton.css";
 import App from "./App";
 import { AppProvider } from "./context";
 

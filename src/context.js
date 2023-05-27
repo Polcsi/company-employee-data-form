@@ -62,7 +62,7 @@ const AppProvider = ({ children }) => {
     element.classList.add("required-input");
   }
 
-  function validateEmployeeForms(employeeForms) {
+  async function validateEmployeeForms(employeeForms) {
     let employeeData = [];
 
     employeeForms.forEach((eForm) => {
@@ -136,7 +136,7 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  function validateCompanyForm() {
+  async function validateCompanyForm() {
     let errors = [];
     if (!companyNameRef.current.value) {
       addRequiredInputStyle(companyNameRef.current);
@@ -163,10 +163,10 @@ const AppProvider = ({ children }) => {
   async function submitForms(e) {
     const employeeForms = document.querySelectorAll(".employee-form");
 
-    const isValidCompanyForm = validateCompanyForm();
-    const employeeFormsData = validateEmployeeForms(employeeForms);
+    const companyFormData = await validateCompanyForm();
+    const employeeFormsData = await validateEmployeeForms(employeeForms);
 
-    if ((isValidCompanyForm !== false) & (employeeFormsData !== false)) {
+    if ((companyFormData !== false) & (employeeFormsData !== false)) {
       toastSuccess("Forms have been sent successfully");
     }
   }

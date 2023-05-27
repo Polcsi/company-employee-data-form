@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CompanyDataForm from "../components/CompanyDataForm";
 import EmployeeDataForm from "../components/EmployeeDataForm";
+import TopScrollButton from "../components/TopScrollButton";
 import { useGlobalContext } from "../context";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +20,7 @@ const MainPage = () => {
   }, [numberOfEmployees]);
   return (
     <>
+      <TopScrollButton />
       <div className="container">
         <section className="company-section section">
           <CompanyDataForm />
