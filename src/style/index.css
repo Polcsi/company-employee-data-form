@@ -93,11 +93,13 @@ body {
 .employee-list::-webkit-scrollbar {
   visibility: hidden;
   width: 5px;
+  height: 5px;
   transition: all ease-in-out 0.2s;
 }
 .on-scroll::-webkit-scrollbar {
   border-radius: 100px;
   width: 5px;
+  height: 5px;
   background: transparent;
   transition: all ease-in-out 0.2s;
 }
@@ -352,39 +354,68 @@ input[type="file"]:focus {
 }
 .employee-cards {
   display: flex;
+  flex-flow: row nowrap;
   gap: 1rem;
-  overflow: auto;
-  padding: 2rem 0;
+  padding: 3rem 0;
+  scroll-snap-type: x mandatory;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 .employee-cards article {
   background: var(--glassmorphic);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
-  padding: 2.3em 2em;
+  padding: clamp(3rem, 6vw, 4rem) clamp(1.4rem, 3vw, 2em)
+    clamp(1.4rem, 3vw, 2em) clamp(1.4rem, 3vw, 2em);
   border-radius: 20px;
   border-left: 1px solid var(--glassmorphic);
   border-top: 1px solid var(--glassmorphic);
   color: var(--text-color);
   position: relative;
   display: grid;
-  grid-template-areas: "";
-  width: 350px;
+  gap: 0.4rem;
+  width: 420px;
+  scroll-snap-align: center;
+}
+.top-design {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: var(--glassmorphic);
+  height: clamp(40px, 5vw, 50px);
+  border-radius: 20px 20px 0 0;
+  border-bottom: 2px solid var(--glassmorphic);
 }
 .row-section {
   display: grid;
-  grid-template-columns: 100px 250px;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  grid-template-columns: clamp(50px, 12vw, 100px) clamp(180px, 17vw, 250px);
+}
+.row-section h2 {
+  text-shadow: var(--text-shadow);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+.row-section span {
+  text-align: right;
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
 }
 .usr-image {
   position: absolute;
-  left: 50%;
+  z-index: 20;
+  left: 15%;
   top: 0;
   transform: translate(-50%, -50%);
-  font-size: 2.4rem;
-  background: var(--glassmorphic);
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  background: rgba(233, 226, 226, 0.593);
+  border: 4px solid var(--glassmorphic);
   padding: 0.4rem;
-  width: 60px;
-  height: 60px;
+  width: clamp(60px, 7vw, 80px);
+  height: clamp(60px, 7vw, 80px);
   border-radius: 100%;
   display: grid;
   place-items: center;
@@ -458,5 +489,8 @@ input[type="file"]:focus {
     grid-template-rows: 60px 60px 60px 60px;
     grid-template-columns: 70% 30%;
     grid-gap: 0 10px;
+  }
+  .employee-cards article {
+    width: 100%;
   }
 }

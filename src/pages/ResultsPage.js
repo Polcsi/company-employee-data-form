@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import TopScrollButton from "../components/TopScrollButton";
 import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context";
@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 
 const ResultsPage = () => {
   const { dataJSON } = useGlobalContext();
+  const employeeCardsRef = useRef(null);
   //const [data, setData] = useState([{ company: [], employees: [] }]);
   const [data, setData] = useState([
     {
@@ -43,6 +44,11 @@ const ResultsPage = () => {
   ]);
   const navigate = useNavigate();
 
+  const scrollEvent = useCallback((e) => {
+    e.preventDefault();
+    employeeCardsRef.current.scrollLeft += e.deltaY;
+  }, []);
+
   useEffect(() => {
     if (!dataJSON) {
       //navigate("/", { replace: false });
@@ -54,6 +60,15 @@ const ResultsPage = () => {
     //setData((prev) => (prev = JSON.parse(dataJSON)));
   }, [setData, dataJSON]);
 
+  useEffect(() => {
+    const cardRef = employeeCardsRef.current;
+    cardRef.addEventListener("wheel", scrollEvent);
+
+    return () => {
+      cardRef.removeEventListener("wheel", scrollEvent);
+    };
+  }, [scrollEvent]);
+
   return (
     <>
       <div className="container results-page">
@@ -62,10 +77,11 @@ const ResultsPage = () => {
         </section>
         <section className="employee-results-section">
           <h1>employees</h1>
-          <div className="employee-cards">
+          <div className="employee-cards on-scroll" ref={employeeCardsRef}>
             {data[0].employees.map((employee, index) => {
               return (
                 <article key={index}>
+                  <div className="top-design"></div>
                   <div className="usr-image">
                     <FaUser />
                   </div>
