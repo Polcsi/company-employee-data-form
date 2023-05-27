@@ -18,6 +18,7 @@ body {
 
 :root {
   --glassmorphic: rgba(255, 255, 255, 0.3);
+  --glassmorphic-dark: rgba(207, 207, 207, 0.3);
   --text-color: #fff;
   --theme-color-dark: #a17ab1;
   --gradient: -45deg, #cbb4d4, #20002c;
@@ -91,7 +92,22 @@ body {
   padding: 0rem 3rem;
 }
 .employee-list::-webkit-scrollbar {
-  display: none;
+  visibility: hidden;
+  width: 5px;
+  transition: all ease-in-out 0.2s;
+}
+.on-scroll::-webkit-scrollbar {
+  border-radius: 100px;
+  width: 5px;
+  background: transparent;
+  transition: all ease-in-out 0.2s;
+}
+.on-scroll::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background: var(--glassmorphic);
+}
+.on-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--glassmorphic-dark);
 }
 .company-section form {
   color: var(--text-color);

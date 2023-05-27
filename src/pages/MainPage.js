@@ -26,7 +26,20 @@ const MainPage = () => {
           <CompanyDataForm />
         </section>
         <section className="employee-section">
-          <div className="employee-list">
+          <div
+            className="employee-list"
+            onScroll={(e) => {
+              if (e.target.classList.contains("on-scroll") === false) {
+                e.target.classList.add("on-scroll");
+              }
+            }}
+            onMouseEnter={(e) => {
+              e.target.classList.add("on-scroll");
+            }}
+            onMouseLeave={(e) => {
+              e.target.classList.remove("on-scroll");
+            }}
+          >
             {numberOfEmployees === "0" ? (
               <h4 className="zero-employee">Number of Employees is zero!</h4>
             ) : (
