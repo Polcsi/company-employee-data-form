@@ -3,7 +3,6 @@ import CompanyDataForm from "../components/CompanyDataForm";
 import EmployeeDataForm from "../components/EmployeeDataForm";
 import TopScrollButton from "../components/TopScrollButton";
 import { useGlobalContext } from "../context";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const MainPage = () => {
@@ -52,7 +51,6 @@ const MainPage = () => {
           </div>
         </section>
       </div>
-      <ToastContainer />
     </>
   );
 };

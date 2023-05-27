@@ -5,6 +5,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [numberOfEmployees, setNumberOfEmployees] = useState(0);
+  const [dataJSON, setDataJSON] = useState("");
   const companyNameRef = useRef(null);
   const companyEmailRef = useRef(null);
   const companyDescriptionRef = useRef(null);
@@ -68,10 +69,9 @@ const AppProvider = ({ children }) => {
     employeeForms.forEach((eForm) => {
       let errors = [];
       let employeeObject = {};
-      /* console.log(eForm); */
 
       eForm.childNodes.forEach((inputs) => {
-        /*  console.log(inputs);
+        /* console.log(inputs);
         console.log(inputs.type); */
         switch (inputs.type) {
           case "text":
@@ -112,6 +112,11 @@ const AppProvider = ({ children }) => {
               employeeObject = { ...employeeObject, job: inputs.value };
             }
             break;
+          case undefined:
+            let pdf = inputs.childNodes[1].value;
+            employeeObject = { ...employeeObject, cv: pdf };
+            break;
+
           default:
             break;
         }
@@ -167,8 +172,15 @@ const AppProvider = ({ children }) => {
     const employeeFormsData = await validateEmployeeForms(employeeForms);
 
     if ((companyFormData !== false) & (employeeFormsData !== false)) {
+      setDataJSON(
+        JSON.stringify([
+          { company: companyFormData, employees: employeeFormsData },
+        ])
+      );
       toastSuccess("Forms have been sent successfully");
+      return true;
     }
+    return false;
   }
 
   return (
@@ -182,6 +194,7 @@ const AppProvider = ({ children }) => {
         companyNameRef,
         companyEmailRef,
         companyDescriptionRef,
+        dataJSON,
       }}
     >
       {children}

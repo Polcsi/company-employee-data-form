@@ -37,7 +37,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /*   align-items: center; */
   animation: gradient 15s ease infinite;
   display: flex;
   gap: 0.5rem;
@@ -319,6 +318,7 @@ input[type="file"]:focus {
 .error-page {
   flex-direction: column;
   color: var(--text-color);
+  align-items: center;
 }
 .error-page h1 {
   font-size: 8rem;
@@ -342,7 +342,53 @@ input[type="file"]:focus {
 .error-page a:focus {
   border: 3px solid white;
 }
-
+/* results page */
+.results-page {
+  display: flex;
+  flex-direction: column;
+}
+.employee-results-section {
+  display: grid;
+}
+.employee-cards {
+  display: flex;
+  gap: 1rem;
+  overflow: auto;
+  padding: 2rem 0;
+}
+.employee-cards article {
+  background: var(--glassmorphic);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  padding: 2.3em 2em;
+  border-radius: 20px;
+  border-left: 1px solid var(--glassmorphic);
+  border-top: 1px solid var(--glassmorphic);
+  color: var(--text-color);
+  position: relative;
+  display: grid;
+  grid-template-areas: "";
+  width: 350px;
+}
+.row-section {
+  display: grid;
+  grid-template-columns: 100px 250px;
+}
+.usr-image {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  font-size: 2.4rem;
+  background: var(--glassmorphic);
+  padding: 0.4rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  display: grid;
+  place-items: center;
+}
 /* media queries */
 @media screen and (max-width: 768px) {
   .employee-section {

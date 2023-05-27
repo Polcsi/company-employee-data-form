@@ -1,6 +1,7 @@
 import React from "react";
 import CustomSlider from "./CustomSlider";
 import "../style/customSlider.css";
+import { useNavigate } from "react-router-dom";
 
 import { useGlobalContext } from "../context";
 
@@ -13,6 +14,7 @@ const CompanyDataForm = () => {
     companyEmailRef,
     companyDescriptionRef,
   } = useGlobalContext();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -48,7 +50,16 @@ const CompanyDataForm = () => {
           ref={companyDescriptionRef}
         ></textarea>
       </form>
-      <button id="submitbtn" type="button" onClick={(e) => submitForms(e)}>
+      <button
+        id="submitbtn"
+        type="button"
+        onClick={async (e) => {
+          let success = await submitForms();
+          if (success) {
+            navigate("/results", { replace: false });
+          }
+        }}
+      >
         Submit
       </button>
     </>
