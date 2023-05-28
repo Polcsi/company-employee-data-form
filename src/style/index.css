@@ -349,8 +349,28 @@ input[type="file"]:focus {
   display: flex;
   flex-direction: column;
 }
-.employee-results-section {
+.results-section {
   display: grid;
+  gap: clamp(0rem, 1vw, 1rem);
+  border: 1px solid var(--glassmorphic);
+  border-radius: 20px;
+  padding: 1rem;
+}
+.results-section h1 {
+  font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+  color: var(--text-color);
+  text-transform: capitalize;
+  position: relative;
+  padding: 0.4rem 1rem;
+}
+.results-section h1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--glassmorphic);
 }
 .employee-cards {
   display: flex;
@@ -394,7 +414,7 @@ input[type="file"]:focus {
   justify-content: center;
   align-items: center;
   gap: 0.2rem;
-  grid-template-columns: clamp(50px, 12vw, 100px) clamp(180px, 17vw, 250px);
+  grid-template-columns: clamp(50px, 12vw, 100px) clamp(190px, 20vw, 250px);
 }
 .row-section h2 {
   text-shadow: var(--text-shadow);
@@ -419,6 +439,37 @@ input[type="file"]:focus {
   border-radius: 100%;
   display: grid;
   place-items: center;
+}
+
+.company-card {
+  width: 100%;
+  max-width: 600px;
+}
+.company-details {
+  display: grid;
+  align-items: start;
+  gap: 0.5rem;
+  padding-top: 0.4rem;
+}
+.c-data-section {
+  display: grid;
+  align-items: center;
+  grid-template-columns: clamp(120px, 30vw, 210px) clamp(190px, 55vw, 340px);
+  color: var(--text-color);
+}
+.c-data-section h2 {
+  display: flex;
+  gap: 0.4rem;
+  align-self: self-start;
+  align-items: start;
+  vertical-align: middle;
+  text-transform: capitalize;
+  text-shadow: var(--text-shadow);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+.c-data-section span {
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  text-align: justify;
 }
 /* media queries */
 @media screen and (max-width: 768px) {
