@@ -347,7 +347,9 @@ input[type="file"]:focus {
 /* results page */
 .results-page {
   display: flex;
+  justify-content: flex-start;
   flex-direction: column;
+  padding-bottom: 1rem;
 }
 .results-section {
   display: grid;
@@ -380,6 +382,10 @@ input[type="file"]:focus {
   scroll-snap-type: x mandatory;
   overflow-y: hidden;
   overflow-x: scroll;
+}
+.employee-cards::-webkit-scrollbar {
+  height: 5px;
+  background: transparent;
 }
 .employee-cards article {
   background: var(--glassmorphic);
@@ -443,7 +449,7 @@ input[type="file"]:focus {
 
 .company-card {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
 }
 .company-details {
   display: grid;
@@ -454,14 +460,14 @@ input[type="file"]:focus {
 .c-data-section {
   display: grid;
   align-items: center;
-  grid-template-columns: clamp(120px, 30vw, 210px) clamp(190px, 55vw, 340px);
+  grid-template-columns: clamp(120px, 30vw, 210px) clamp(190px, 54vw, 550px);
   color: var(--text-color);
 }
 .c-data-section h2 {
   display: flex;
   gap: 0.4rem;
   align-self: self-start;
-  align-items: start;
+  align-items: flex-start;
   vertical-align: middle;
   text-transform: capitalize;
   text-shadow: var(--text-shadow);
@@ -543,5 +549,8 @@ input[type="file"]:focus {
   }
   .employee-cards article {
     width: 100%;
+  }
+  .results-page {
+    padding-bottom: 0.5rem;
   }
 }
