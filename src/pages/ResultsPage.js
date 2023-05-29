@@ -1,9 +1,15 @@
+/* 
+  Results page for "/results" route.
+*/
+
 import React, { useEffect, useState } from "react";
-import TopScrollButton from "../components/TopScrollButton";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context";
+/* Import Icons */
 import { FaUser, FaHashtag } from "react-icons/fa";
 import { MdOutlineEmail, MdDescription } from "react-icons/md";
+/* Import components */
+import TopScrollButton from "../components/TopScrollButton";
 import HomeButton from "../components/HomeButton";
 
 const ResultsPage = () => {
@@ -12,12 +18,14 @@ const ResultsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    /* Navigates back to the home page if the dataJSON variable is empty. dataJSON variable stores the submitted json string from the entered values in the forms */
     if (!dataJSON) {
       navigate("/", { replace: false });
     }
   });
 
   useEffect(() => {
+    /* Convert the json string to an object */
     setData((prev) => (prev = JSON.parse(dataJSON)));
   }, [setData, dataJSON]);
 
@@ -56,12 +64,15 @@ const ResultsPage = () => {
           <div
             className="employee-cards"
             onMouseEnter={(e) => {
+              /* Show scrollbar on mouse enter */
               e.target.classList.add("on-scroll");
             }}
             onMouseLeave={(e) => {
+              /* hide scrollbar on mouse leave */
               e.target.classList.remove("on-scroll");
             }}
           >
+            {/* Iterate over the employees and shows on the page */}
             {data[0].employees.map((employee, index) => {
               return (
                 <article key={index}>

@@ -1,9 +1,13 @@
+/* 
+  This component creates a custom select component.
+*/
+
 import React from "react";
-import { jobTitles } from "../data";
 import { useGlobalContext } from "../context";
+import { jobTitles } from "../data"; // The options stored in a seperate file
 
 const CustomSelect = () => {
-  const { styleRequiredInput, invalidEmail } = useGlobalContext();
+  const { styleRequiredInput } = useGlobalContext();
 
   return (
     <>
@@ -14,6 +18,7 @@ const CustomSelect = () => {
         required
       >
         <option disabled hidden value={0}>
+          {/* default value it is hidden and disabled actually this is a placeholder */}
           Select Job
         </option>
         {jobTitles.map((job, index) => {

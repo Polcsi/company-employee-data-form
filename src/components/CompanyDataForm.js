@@ -1,9 +1,13 @@
+/* 
+  Component for company section.
+*/
+
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../context";
+/* import custom slider */
 import CustomSlider from "./CustomSlider";
 import "../style/customSlider.css";
-import { useNavigate } from "react-router-dom";
-
-import { useGlobalContext } from "../context";
 
 const CompanyDataForm = () => {
   const {
@@ -30,7 +34,7 @@ const CompanyDataForm = () => {
           id="name"
           type="text"
           ref={companyNameRef}
-          onInput={(e) => styleRequiredInput(e)}
+          onInput={(e) => styleRequiredInput(e)} // style if input field is not empty
         ></input>
         <input
           required
@@ -39,10 +43,10 @@ const CompanyDataForm = () => {
           id="email"
           type="email"
           ref={companyEmailRef}
-          onInput={(e) => styleRequiredInput(e)}
-          onInvalid={(e) => invalidEmail(e)}
+          onInput={(e) => styleRequiredInput(e)} // style if input field is not empty
+          onInvalid={(e) => invalidEmail(e)} // validate email
         ></input>
-        <CustomSlider min={1} max={100} />
+        <CustomSlider min={1} max={100} /> {/* Custom slider component */}
         <textarea
           id="description"
           placeholder="Description"
@@ -54,8 +58,10 @@ const CompanyDataForm = () => {
         id="submitbtn"
         type="button"
         onClick={async (e) => {
+          // Form submission
           let success = await submitForms();
           if (success) {
+            // navigates to the results page if the form filled successfully
             navigate("/results", { replace: false });
           }
         }}

@@ -1,6 +1,11 @@
+/* 
+  Component for employee section. This compnent renders a single employee form.
+*/
+
 import React from "react";
-import CustomSelect from "./CustomSelect";
 import { useGlobalContext } from "../context";
+// import custom select component
+import CustomSelect from "./CustomSelect";
 
 const EmployeeDataForm = ({ number }) => {
   const { styleRequiredInput, invalidEmail } = useGlobalContext();
@@ -15,7 +20,7 @@ const EmployeeDataForm = ({ number }) => {
           type="text"
           placeholder="Name"
           required
-          onInput={(e) => styleRequiredInput(e)}
+          onInput={(e) => styleRequiredInput(e)} // style input field
         />
         <input
           className="employeeAge input"
@@ -23,7 +28,7 @@ const EmployeeDataForm = ({ number }) => {
           type="number"
           placeholder="Age"
           required
-          onInput={(e) => styleRequiredInput(e)}
+          onInput={(e) => styleRequiredInput(e)} // style input field
         />
         <input
           autoComplete="on"
@@ -31,8 +36,8 @@ const EmployeeDataForm = ({ number }) => {
           type="email"
           placeholder="Email"
           required
-          onInput={(e) => styleRequiredInput(e)}
-          onInvalid={(e) => invalidEmail(e)}
+          onInput={(e) => styleRequiredInput(e)} // style input field
+          onInvalid={(e) => invalidEmail(e)} // validate email and style input field
         />
         <CustomSelect />
         <div className="employeeCVFile">

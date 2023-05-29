@@ -1,3 +1,8 @@
+/* 
+  Error page for "/*" route.
+  Error page show when the user navigates to an non-implemented route
+*/
+
 import React from "react";
 import { FaHome } from "react-icons/fa";
 
