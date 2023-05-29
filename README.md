@@ -11,7 +11,7 @@ The pages have very clean looking and designed make the page easy to use for the
 
 ### Home Page "/"
 
-The home page includes a company form section where the user be able to give the company name, email address, number of employees and a short description about company. Furthermore there is an employees section on the home page which is dinamically rendered it depends on how many number of employees were given in the comapny section.
+The home page includes a company form section where the user be able to give the company name, email address, number of employees and a short description about company. Furthermore there is an employees section on the home page which is dinamically rendered it depends on how many number of employees were given in the comapny section. In the employees section the user will be able to give the employee name, age, email, job and cv pdf file. The user can submit the forms with the submit button in the company section. After the user clicks on the submit button and all the required fields is filled then it navigates to the results page where the entered values will be represented.
 
 ![home-page-image](/assets/main-page.png)
 
